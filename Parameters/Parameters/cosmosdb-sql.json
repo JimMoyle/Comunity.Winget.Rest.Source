@@ -1,0 +1,19 @@
+{
+  "$Schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "Parameters": {
+    "cosmosName": {
+      "value": "yaotestrest3"
+    },
+    "options": {
+      "Value": {
+        "autoscaleSettings": {
+          "maxThroughput": 4000
+        }
+      }
+    },
+    "sqlname": {
+      "value": "WinGet"
+    }
+  }
+}

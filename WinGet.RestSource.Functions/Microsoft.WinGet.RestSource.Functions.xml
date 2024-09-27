@@ -1,0 +1,857 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WinGet.RestSource.Functions</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Common.ActionResultHelper">
+            <summary>
+            This Creates Action Results.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Common.ActionResultHelper.ProcessError(Microsoft.WinGet.RestSource.Utils.Models.Errors.InternalRestError)">
+            <summary>
+            This will process an Error, and create an appropriate response code.
+            </summary>
+            <param name="internalRestError">Error to process.</param>
+            <returns>Object Result.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Common.ActionResultHelper.UnhandledError(System.Exception)">
+            <summary>
+            This creates a default Unhandled error and returns the result from the process error function.
+            </summary>
+            <param name="exception">Exception.</param>
+            <returns>Object Result.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Common.ActionResultHelper.CreateObjectResult(System.Object,System.Int32)">
+            <summary>
+            This creates a JSON based Object Result.
+            </summary>
+            <param name="data">Data to Return.</param>
+            <param name="code">Return Code.</param>
+            <returns>Object Result.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Common.ApiObjectResult">
+            <summary>
+            Default OK Object Result.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Common.ApiObjectResult.#ctor(System.Object,System.Int32,Newtonsoft.Json.NullValueHandling,Newtonsoft.Json.Formatting)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.Common.ApiObjectResult"/> class.
+            </summary>
+            <param name="value">Object.</param>
+            <param name="statusCode">Status Code.</param>
+            <param name="nullValueHandling">Null Handling.</param>
+            <param name="formatting">Formatting.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Common.CertificateValidationHelper">
+            <summary>
+            Provides common certificate validation helpers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Common.CertificateValidationHelper.ValidateAuthentication(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            This will check for a client certificate and verify its applicability.
+            </summary>
+            <param name="req">the httprequest to process.</param>
+            <param name="log">Log output.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Common.CertificateValidationHelper.IsClientCertValid(System.Security.Cryptography.X509Certificates.X509Certificate2,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Checks the validity of a given client certificate.
+            </summary>
+            <param name="certificate">Certificate to validate.</param>
+            <param name="log">Log output.</param>
+            <returns>True if the certificate is valid. False otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment">
+            <summary>
+            Environment Variables used by Azure Functions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.AppInsightsInstrumentationKeyVariable">
+            <summary>
+            App Insights Instrumentation Key Variable.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.MonitorMetricsAccountVariable">
+            <summary>
+            Monitor Metrics Account Variable.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.MonitorRoleVariable">
+            <summary>
+            Monitor Role Variable.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.MonitorTenantVariable">
+            <summary>
+            Monitor Tenant Variable.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.ServerIdentifierVariable">
+            <summary>
+            Server Identifier Variable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.AppInsightsInstrumentationKey">
+            <summary>
+            Gets AppInsights Instrumentation key.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.MonitoringAccount">
+            <summary>
+            Gets Geneva Monitoring Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.MonitorRole">
+            <summary>
+            Gets Telemetry Role.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.MonitorTenant">
+            <summary>
+            Gets Telemetry Tenant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Functions.Constants.AzureFunctionEnvironment.ServerIdentifier">
+            <summary>
+            Gets Telemetry Tenant.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants">
+            <summary>
+            This contains the constants for functions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.FunctionPost">
+            <summary>
+            Function Post.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.FunctionDelete">
+            <summary>
+            Function Delete.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.FunctionPut">
+            <summary>
+            Function Put.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.FunctionGet">
+            <summary>
+            Function Get.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ManifestSearchPost">
+            <summary>
+            Manifest Search Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ManifestPost">
+            <summary>
+            Manifest Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ManifestDelete">
+            <summary>
+            Manifest Delete Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ManifestPut">
+            <summary>
+            Manifest Put Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ManifestGet">
+            <summary>
+            Manifest Get Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.PackagePost">
+            <summary>
+            Package Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.PackageDelete">
+            <summary>
+            Package Delete Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.PackagePut">
+            <summary>
+            Package Put Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.PackageGet">
+            <summary>
+            Package Get Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.VersionPost">
+            <summary>
+            Version Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.VersionDelete">
+            <summary>
+            Version Delete Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.VersionPut">
+            <summary>
+            Version Put Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.VersionGet">
+            <summary>
+            Version Get Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.InstallerPost">
+            <summary>
+            Installer Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.InstallerDelete">
+            <summary>
+            Installer Delete Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.InstallerPut">
+            <summary>
+            Installer Put Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.InstallerGet">
+            <summary>
+            Installer Get Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.LocalePost">
+            <summary>
+            Locale Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.LocaleDelete">
+            <summary>
+            Locale Delete Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.LocalePut">
+            <summary>
+            Locale Put Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.LocaleGet">
+            <summary>
+            Locale Get Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.InformationGet">
+            <summary>
+            Information Get Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.RebuildPost">
+            <summary>
+            Rebuild Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.RebuildOrchestrator">
+            <summary>
+            Rebuild Orchestrator Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.RebuildActivity">
+            <summary>
+            Rebuild Activity Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.UpdatePost">
+            <summary>
+            Update Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.UpdateOrchestrator">
+            <summary>
+            Update Orchestrator Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.UpdateActivity">
+            <summary>
+            Update Activity Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ExistsPost">
+            <summary>
+            Exists Post Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ExistsOrchestrator">
+            <summary>
+            Exists Orchestrator Function Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Constants.FunctionConstants.ExistsActivity">
+            <summary>
+            Exists Activity Function Name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Extensions.DurableOrchestrationExtensions">
+            <summary>
+            Helper class for IDurableOrchestrationContext. Handles not logging on replays.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Extensions.DurableOrchestrationExtensions.LogInfo(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationContext,System.String)">
+            <summary>
+            Log info one time in a durable context.
+            </summary>
+            <param name="durableContext">DurableContext.</param>
+            <param name="message">message.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Extensions.DurableOrchestrationExtensions.LogError(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationContext,System.String)">
+            <summary>
+            Log error one time in a durable context.
+            </summary>
+            <param name="durableContext">DurableContext.</param>
+            <param name="message">message.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Extensions.DurableOrchestrationExtensions.LogWarning(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationContext,System.String)">
+            <summary>
+            Log warning one time in a durable context.
+            </summary>
+            <param name="durableContext">DurableContext.</param>
+            <param name="message">message.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Geneva.MetricNamespaces">
+            <summary>
+            Geneva NameSpaces.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Geneva.MetricNamespaces.MsPkgMgrProdLogs">
+            <summary>
+            Geneva Metrics namespace.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics">
+            <summary>
+            Geneva Metrics.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics.DatabaseUpdateError">
+            <summary>
+            Unhandled exception updating the DB.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics.DatabaseGetError">
+            <summary>
+            Unhandled exception getting data from the DB.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics.ServerInformationError">
+            <summary>
+            Unhandled exception retrieving server information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics.SourceRebuildError">
+            <summary>
+            Error handling rebuild request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics.SourceUpdateError">
+            <summary>
+            Error handling update request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Geneva.Metrics">
+            <summary>
+            Helper that emits metrics or logs that trigger IcMs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Geneva.Metrics.EmitMetricForOperation(Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Wrapper around MetricsManager EmitMetricForOperation.
+            </summary>
+            <param name="errorMetric">Metric.</param>
+            <param name="functionName">Operation.</param>
+            <param name="path">Route.</param>
+            <param name="headers">Headers.</param>
+            <param name="error">Error.</param>
+            <param name="log">ILogger log.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Geneva.Metrics.EmitMetricForOperation(Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Object,System.Exception,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Wrapper around MetricsManager EmitMetricForOperation.
+            </summary>
+            <param name="errorMetric">Metric.</param>
+            <param name="functionName">Operation.</param>
+            <param name="path">Route.</param>
+            <param name="headers">Headers.</param>
+            <param name="obj">Object.</param>
+            <param name="error">Error.</param>
+            <param name="log">ILogger log.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Geneva.Metrics.EmitMetric(Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics,System.Collections.Generic.Dictionary{System.String,System.String},Microsoft.Extensions.Logging.ILogger,System.Int32,Microsoft.WinGet.RestSource.Functions.Geneva.MetricNamespaces)">
+            <summary>
+            Wrapper around MetricsManager EmitMetric.
+            </summary>
+            <param name="errorMetric">Metric.</param>
+            <param name="icmDimensions">Dimensions.</param>
+            <param name="log">ILogger log.</param>
+            <param name="metricValue">Metric Value.</param>
+            <param name="metricNamespaces">Metrics Namespace.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.InstallerFunctions">
+            <summary>
+            This class contains the functions for interacting with installers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.InstallerFunctions.#ctor(Microsoft.WinGet.RestSource.Utils.Common.IApiDataStore,Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.InstallerFunctions"/> class.
+            </summary>
+            <param name="dataStore">Data Store.</param>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.InstallerFunctions.InstallerPostAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Installer Post Function.
+            This allows us to make post requests for installers.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.InstallerFunctions.InstallerDeleteAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Installer Delete Function.
+            This allows us to make delete requests for versions.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="installerIdentifier">Installer Identifier for the installer.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.InstallerFunctions.InstallerPutAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Installer Put Function.
+            This allows us to make put requests for installers.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="installerIdentifier">Installer Identifier for the installer.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.InstallerFunctions.InstallerGetAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Installer Get Function.
+            This allows us to make get requests for installers.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="installerIdentifier">Installer Identifier for the installer.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.LocaleFunctions">
+            <summary>
+            This class contains the functions for interacting with locales.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.LocaleFunctions.#ctor(Microsoft.WinGet.RestSource.Utils.Common.IApiDataStore,Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.LocaleFunctions"/> class.
+            </summary>
+            <param name="dataStore">Data Store.</param>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.LocaleFunctions.LocalePostAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Locale Post Function.
+            This allows us to make post requests for locales.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.LocaleFunctions.LocaleDeleteAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Locale Delete Function.
+            This allows us to make delete requests for locales.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="packageLocale">Package locale.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.LocaleFunctions.LocalePutAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Locale Put Function.
+            This allows us to make put requests for locale.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="packageLocale">Package locale.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.LocaleFunctions.LocaleGetAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Locale Get Function.
+            This allows us to make put requests for locales.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="packageLocale">Package locale.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.ManifestSearchFunctions">
+            <summary>
+            This class contains the functions for searching manifests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.ManifestSearchFunctions.#ctor(Microsoft.WinGet.RestSource.Utils.Common.IApiDataStore,Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.ManifestSearchFunctions"/> class.
+            </summary>
+            <param name="dataStore">Data Store.</param>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.ManifestSearchFunctions.ManifestSearchPostAsync(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Manifest Search Post Function.
+            This also allows us to query manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.PackageFunctions">
+            <summary>
+            This class contains the functions for interacting with packages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageFunctions.#ctor(Microsoft.WinGet.RestSource.Utils.Common.IApiDataStore,Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.PackageFunctions"/> class.
+            </summary>
+            <param name="dataStore">Data Store.</param>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageFunctions.PackagesPostAsync(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Package Post Function.
+            This allows us to handle post requests for manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageFunctions.PackageDeleteAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Package Delete Function.
+            This allows us to make delete requests for packages.
+            This will delete all sub resources as well.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageFunctions.PackagesPutAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Package Put Function.
+            This allows us to make put requests for packages.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageFunctions.PackagesGetAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Manifest Get Function.
+            This allows us to make Get requests for manifests.
+            This also allows us to query manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions">
+            <summary>
+            This class contains the functions for interacting with manifests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions.#ctor(Microsoft.WinGet.RestSource.Utils.Common.IApiDataStore,Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions"/> class.
+            </summary>
+            <param name="dataStore">Data Store.</param>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions.ManifestPostAsync(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Manifest Post Function.
+            This allows us to handle post requests for manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions.ManifestDeleteAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Manifest Delete Function.
+            This allows us to make delete requests for manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package Identifier.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions.ManifestPutAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Manifest Put Function.
+            This allows us to make put requests for manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Manifest ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.PackageManifestFunctions.ManifestGetAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Manifest Get Function.
+            This allows us to make Get requests for manifests.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.ServerFunctions">
+            <summary>
+            This class contains the functions for interacting with packages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.ServerFunctions.#ctor(Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.ServerFunctions"/> class.
+            </summary>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.ServerFunctions.InformationGetAsync(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Server Information Get Function.
+            This allows us to make Get Server Information.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.SourceFunctions">
+            <summary>
+            This class contains the functions for uploads from and querying data from a repository.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.#ctor(System.Net.Http.IHttpClientFactory,Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration,Microsoft.WinGet.RestSource.Interfaces.IRebuild,Microsoft.WinGet.RestSource.Interfaces.IUpdate,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.SourceFunctions"/> class.
+            </summary>
+            <param name="httpClientFactory">Http client factory.</param>
+            <param name="telemetryConfiguration">AppInsights Telemetry Configuration.</param>
+            <param name="rebuildHandler">An object of type <see cref="T:Microsoft.WinGet.RestSource.Interfaces.IRebuild"/>.</param>
+            <param name="updateHandler">An object of type <see cref="T:Microsoft.WinGet.RestSource.Interfaces.IUpdate"/>.</param>
+            <param name="restSourceTriggerFunction">An object of type <see cref="T:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction"/>.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.RebuildOrchestratorAsync(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationContext,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext)">
+            <summary>
+            Azure function to dispatch source rebuild work.
+            </summary>
+            <param name="durableContext">Durable orchestration context.</param>
+            <param name="logger">Logger.</param>
+            <param name="executionContext">Function execution context.</param>
+            <returns>SourceResultOutputHelper.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.RebuildActivityAsync(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableActivityContext,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext)">
+            <summary>
+            This function provides an API call that will perform the source rebuild.
+            </summary>
+            <param name="durableContext">Durable context.</param>
+            <param name="logger">This is the default ILogger passed in for Azure Functions.</param>
+            <param name="executionContext">Function execution context.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.RebuildPostAsync(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationClient,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext)">
+            <summary>
+            Rebuild Post Function.
+            This function supports analyzing an SQLite file and attempting to match the cosmos Db state to the file.
+            This function involves doing multiple full passes of the database, thus will be very expensive. It should be used
+            sparingly only for bootstrapping catalogs and recovering from significant failures.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="durableClient">Durable client object.</param>
+            <param name="logger">ILogger.</param>
+            <param name="executionContext">Function execution context.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.UpdateOrchestratorAsync(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationContext,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext)">
+            <summary>
+            Azure function to dispatch source update work.
+            </summary>
+            <param name="durableContext">Durable orchestration context.</param>
+            <param name="logger">Logger.</param>
+            <param name="executionContext">Function execution context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the result of the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.UpdateActivityAsync(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableActivityContext,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext)">
+            <summary>
+            This function provides an API call that will perform the source update.
+            </summary>
+            <param name="durableContext">Durable context.</param>
+            <param name="logger">This is the default ILogger passed in for Azure Functions.</param>
+            <param name="executionContext">Function execution context.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.UpdatePostAsync(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationClient,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext)">
+            <summary>
+            Update Post Function.
+            For each change, we trigger the corresponding operation against the rest source implementation to
+            add, remove, or update an application.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="durableClient">Durable client object.</param>
+            <param name="logger">ILogger.</param>
+            <param name="executionContext">Function execution context.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.SourceOrchestratorHelperAsync``1(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationContext,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext,System.String,System.String,Microsoft.WinGet.RestSource.Functions.Geneva.ErrorMetrics)">
+            <summary>
+            Source orchestrator helper that does all boilerplate for logging.
+            Currently it handles calling only one activity function and the only accepted input is ContextAndReferenceInput.
+            If a a more complex orchestration is needed, this can be updated to take a lambda with the orchestrator work
+            and use generics for input and output.
+            Because this is executed in an Azure Orchestration Function there MUST NOT be awaitable calls that are
+            not initiated by the durable orchestration context.
+            </summary>
+            <typeparam name="TFunctionInput">Generic function input.</typeparam>
+            <param name="durableContext">Orchestration durable context.</param>
+            <param name="logger">Logger.</param>
+            <param name="executionContext">Execution context.</param>
+            <param name="activityFunction">Activity function to call.</param>
+            <param name="orchestrationFunction">Name of orchestration function. Used for debugging.</param>
+            <param name="errorMetric">Metric to emit for failures.</param>
+            <returns>SourceResultOutputHelper.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.SourceActivityHelperAsync``1(Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableActivityContext,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext,System.Func{``0,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext,System.Threading.Tasks.Task{Microsoft.WindowsPackageManager.Rest.Models.SourceResultOutputHelper}},System.String)">
+            <summary>
+            Source activity function helper that does all boilerplate for logging.
+            Currently it handles only returning SourceResultOutputHelper and its input must
+            implement ContextAndReferenceInputHelper.
+            The return type must be a SourceResultOutputHelper.
+            </summary>
+            <typeparam name="TFunctionInput">Generic function input.</typeparam>
+            <param name="durableContext">Activity durable context.</param>
+            <param name="logger">Logger.</param>
+            <param name="executionContext">Execute context.</param>
+            <param name="workAsync">Work to be done by the activity function.</param>
+            <param name="activityFunction">Activity function that does the work. Used for logging.</param>
+            <returns>SourceResultOutputHelper.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.SourceFunctions.SourceEntryPointHelperAsync``1(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.Azure.WebJobs.Extensions.DurableTask.IDurableOrchestrationClient,Microsoft.Extensions.Logging.ILogger,Microsoft.Azure.WebJobs.ExecutionContext,System.String,System.String)">
+            <summary>
+            Source entry point helper function that does all boilerplate for logging.
+            Parse the request body and starts the given orchestrator. Currently it only supports ContextAndReferenceInputHelper.
+            </summary>
+            <typeparam name="TInput">Input.</typeparam>
+            <param name="req">Request.</param>
+            <param name="durableClient">Durable orchestration client.</param>
+            <param name="logger">Logger.</param>
+            <param name="executionContext">Execution context.</param>
+            <param name="orchestratorFunction">Orchestration function to start.</param>
+            <param name="entryPointFunction">Az functions that was called. Used for logging.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.Startup">
+            <summary>
+            Azure function startup class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.Startup.Configure(Microsoft.Azure.Functions.Extensions.DependencyInjection.IFunctionsHostBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Functions.VersionFunctions">
+            <summary>
+            This class contains the functions for interacting with versions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.VersionFunctions.#ctor(Microsoft.WinGet.RestSource.Utils.Common.IApiDataStore,Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Functions.VersionFunctions"/> class.
+            </summary>
+            <param name="dataStore">Data Store.</param>
+            <param name="appConfig">App Config.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.VersionFunctions.VersionsPostAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Version Post Function.
+            This allows us to make post requests for versions.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.VersionFunctions.VersionsDeleteAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Version Delete Function.
+            This allows us to make Delete requests for versions.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.VersionFunctions.VersionsPutAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Version Put Function.
+            This allows us to make put requests for versions.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Functions.VersionFunctions.VersionsGetAsync(Microsoft.AspNetCore.Http.HttpRequest,System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Version Get Function.
+            This allows us to make get requests for versions.
+            </summary>
+            <param name="req">HttpRequest.</param>
+            <param name="packageIdentifier">Package ID.</param>
+            <param name="packageVersion">Version ID.</param>
+            <param name="log">ILogger.</param>
+            <returns>IActionResult.</returns>
+        </member>
+    </members>
+</doc>

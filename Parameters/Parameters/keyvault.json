@@ -1,0 +1,29 @@
+{
+  "$Schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "Parameters": {
+    "accessPolicies": {
+      "value": [
+        {
+          "permissions": {
+            "keys": [],
+            "secrets": [
+              "Get",
+              "Set"
+            ],
+            "certificates": []
+          },
+          "objectID": "3514cda7-169e-4603-a4bf-752cd6947eea",
+          "tenantId": "fa33dd58-e132-4ce4-a344-fc5f19eedee2"
+        }
+      ]
+    },
+    "name": {
+      "value": "yaotestrest3",
+      "type": "string"
+    },
+    "sku": {
+      "value": "Standard"
+    }
+  }
+}

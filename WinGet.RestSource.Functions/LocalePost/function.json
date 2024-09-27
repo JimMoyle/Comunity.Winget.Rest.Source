@@ -1,0 +1,18 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions.Generator-4.2.0",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "route": "packages/{packageIdentifier}/versions/{packageVersion}/locales",
+      "methods": [
+        "post"
+      ],
+      "authLevel": "function",
+      "name": "req"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/Microsoft.WinGet.RestSource.Functions.dll",
+  "entryPoint": "Microsoft.WinGet.RestSource.Functions.LocaleFunctions.LocalePostAsync"
+}

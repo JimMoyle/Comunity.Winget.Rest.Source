@@ -1,0 +1,45 @@
+{
+  "$Schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "Parameters": {
+    "conflictResolutionPolicy": {
+      "value": {
+        "mode": "LastWriterWins",
+        "conflictResolutionPath": "/_ts"
+      }
+    },
+    "cosmosName": {
+      "Value": "yaotestrest3"
+    },
+    "sqlname": {
+      "Value": "WinGet"
+    },
+    "containerName": {
+      "value": "Manifests"
+    },
+    "partitionKey": {
+      "value": {
+        "paths": [
+          "/id"
+        ],
+        "kind": "Hash"
+      }
+    },
+    "indexingPolicy": {
+      "Value": {
+        "includedPaths": [
+          {
+            "path": "/*"
+          }
+        ],
+        "excludePaths": [
+          {
+            "path": "/\"_etag\"/?"
+          }
+        ],
+        "automatic": true,
+        "IndexingMode": "consistent"
+      }
+    }
+  }
+}

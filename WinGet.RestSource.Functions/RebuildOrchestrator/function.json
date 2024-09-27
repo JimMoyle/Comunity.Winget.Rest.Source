@@ -1,0 +1,13 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions.Generator-4.2.0",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "orchestrationTrigger",
+      "name": "durableContext"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/Microsoft.WinGet.RestSource.Functions.dll",
+  "entryPoint": "Microsoft.WinGet.RestSource.Functions.SourceFunctions.RebuildOrchestratorAsync"
+}

@@ -1,0 +1,733 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WinGet.RestSource</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase">
+            <summary>
+            This class retrieves a database and sets it up if it does not exist.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase"/> class.
+            </summary>
+            <param name="serviceEndpoint">Service Endpoint.</param>
+            <param name="readWriteKey">Authorization Key with read-write permissions.</param>
+            <param name="readOnlyKey">Authorization Key with read-only permissions.</param>
+            <param name="databaseId">Database.</param>
+            <param name="containerId">Database container.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.CreateContainer(System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.DeleteContainer">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.Count``1">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.Add``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.Delete``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.Upsert``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.Update``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.GetIQueryable``1(Microsoft.Azure.Cosmos.QueryRequestOptions,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.GetByIdAndPartitionKey``1(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.GetByDocumentQuery``1(Microsoft.Azure.Cosmos.FeedIterator{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDatabase.GetByDocumentQuery``1(System.Linq.IQueryable{``0},Microsoft.Azure.Cosmos.QueryRequestOptions,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore">
+            <summary>
+            Cosmos Data Store.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.#ctor(Microsoft.Extensions.Logging.ILogger{Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore},System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore"/> class.
+            </summary>
+            <param name="log">Log.</param>
+            <param name="serviceEndpoint">Service Endpoint.</param>
+            <param name="readWriteKey">Authorization Key with read-write permissions.</param>
+            <param name="readOnlyKey">Authorization Key with read-only permissions.</param>
+            <param name="databaseId">Database.</param>
+            <param name="containerId">Database container.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.CreateContainer(System.Nullable{System.Int32})">
+            <summary>
+            Check if a container exists, and if it doesn't, create it. This will make a read operation, and if the
+            container is not found it will do a create operation.
+            </summary>
+            <param name="throughput">(Optional) The throughput provisioned for a container in measurement of
+            Request Units per second in the Azure Cosmos DB service.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.DeleteContainer">
+            <summary>
+            Deletes the Cosmos DB container.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.AddPackage(Microsoft.WinGet.RestSource.Utils.Models.Schemas.Package)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.DeletePackage(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.UpdatePackage(System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Package)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.GetPackages(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.AddVersion(System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.DeleteVersion(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.UpdateVersion(System.String,System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.GetVersions(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.AddInstaller(System.String,System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Installer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.DeleteInstaller(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.UpdateInstaller(System.String,System.String,System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Installer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.GetInstallers(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.AddLocale(System.String,System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Locale)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.DeleteLocale(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.UpdateLocale(System.String,System.String,System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.Locale)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.GetLocales(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.AddPackageManifest(Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.DeletePackageManifest(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.UpdatePackageManifest(System.String,Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.GetPackageManifests(System.String,System.String,System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.SearchPackageManifests(Microsoft.WinGet.RestSource.Utils.Models.Schemas.ManifestSearchRequest,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosDataStore.ApplyMarketFilter(System.Collections.Generic.IList{Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest},System.String)">
+            <summary>
+            Method to apply market filter and return results.
+            </summary>
+            <param name="packageManifests">Package manifests on which filter must be applied.</param>
+            <param name="marketFilter">Market filter value.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Cosmos.CosmosDocument`1">
+            <summary>
+            This represents a cosmos document.
+            It contains the document, associated data (such as e-tag), as well as error information.
+            </summary>
+            <typeparam name="T">This is the document type for cosmos.</typeparam>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Cosmos.CosmosDocument`1.Document">
+            <summary>
+            Gets or sets the Cosmos Document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Cosmos.CosmosDocument`1.Id">
+            <summary>
+            Gets or sets id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Cosmos.CosmosDocument`1.PartitionKey">
+            <summary>
+            Gets partition Key.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Cosmos.CosmosDocument`1.Etag">
+            <summary>
+            Gets or sets the etag for a document.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest">
+            <summary>
+            This is a manifest, which is an extension of the package core model, and the extended version model.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest.#ctor(Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest"/> class.
+            </summary>
+            <param name="cosmosPackageManifest">manifest.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest.#ctor(Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest"/> class.
+            </summary>
+            <param name="packageManifest">manifest.</param>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest.Id">
+            <summary>
+            Gets ID.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.CosmosPackageManifest.ToManifest">
+            <summary>
+            Converts to a Package Core.
+            </summary>
+            <returns>Package Core.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Cosmos.PredicateGenerator">
+            <summary>
+            Expression predicate generator that is safe for usage with Cosmos DB.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.PredicateGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Cosmos.PredicateGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.PredicateGenerator.AddCondition(Microsoft.WinGet.RestSource.Utils.Models.Objects.SearchRequestPackageMatchFilter,LinqKit.PredicateOperator)">
+            <summary>
+            Adds a condition to this predicate based on specified condition and operator.
+            </summary>
+            <param name="condition">Condition to add to predicate.</param>
+            <param name="predicateOperator">Operator to apply to new condition.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.PredicateGenerator.Generate(LinqKit.PredicateOperator)">
+            <summary>
+            Merge all sub-predicates into a single predicate, simplifying where possible.
+            </summary>
+            <param name="predicateOperator">Operator to use for merging.</param>
+            <returns>Merged root predicate.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Cosmos.PredicateGenerator.IsStarted">
+            <summary>
+            Determine if the predicate is the default predicate.
+            </summary>
+            <returns>Returns true if the predicate is not default, false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException">
+            <summary>
+            RestSourceCallException.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException.#ctor(System.String,System.Net.Http.HttpMethod,System.Net.HttpStatusCode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException"/> class.
+            </summary>
+            <param name="endpoint">Endpoint.</param>
+            <param name="httpMethod">HttpMethod.</param>
+            <param name="httpStatusCode">Http status code.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Exceptions.RestSourceCallException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="inner">Inner exception.</param>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Factories.RebuildFactory">
+            <summary>
+            Helps initialize the rebuilder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Factories.RebuildFactory.InitializeRebuildInstance">
+            <summary>
+            Factory method to initialize rebuild object.
+            </summary>
+            <returns>An instance of <see cref="T:Microsoft.WinGet.RestSource.Operations.Rebuild"/>.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Factories.UpdateFactory">
+            <summary>
+            Helps initialize the updater.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Factories.UpdateFactory.InitializeUpdateInstance">
+            <summary>
+            Factory method to initialize update object.
+            </summary>
+            <returns>An instance of <see cref="T:Microsoft.WinGet.RestSource.Operations.Update"/>.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions">
+            <summary>
+            Trigger azure functions for rest source.
+            Currently it supports
+                GET, PUT, POST and DELETE calls to package manifests endpoint.
+                GET, DELETE packages endpoint.
+                DELETE versions endpoint.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions"/> class.
+            </summary>
+            <param name="azFuncRestSourceEndpoint">Azure function Rest Source Endpoint.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.GetPackageManifestAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.PostPackageManifestAsync(System.Net.Http.HttpClient,Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.PutPackageManifestAsync(System.Net.Http.HttpClient,Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.DeletePackageManifestAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.GetAllPackagesAsync(System.Net.Http.HttpClient,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.GetPackagesAsync(System.Net.Http.HttpClient,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.DeletePackageAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Helpers.RestSourceTriggerFunctions.DeleteVersionAsync(System.Net.Http.HttpClient,System.String,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase">
+            <summary>
+            This provides an interface for CosmosDatabase.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.CreateContainer(System.Nullable{System.Int32})">
+            <summary>
+            Check if a container exists, and if it doesn't, create it. This will make a read operation, and if the container is not found it will do a create operation.
+            </summary>
+            <param name="throughput">(Optional) The throughput provisioned for a container in measurement of Request Units per second in the Azure Cosmos DB service.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.DeleteContainer">
+            <summary>
+            Delete the container from the Azure Cosmos DB service as an asynchronous operation.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.Count``1">
+            <summary>
+            Returns the number of items in the Cosmos DB.
+            </summary>
+            <typeparam name="T">Type of the items to count.</typeparam>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.Add``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <summary>
+            This will add a new document.
+            This will fail if a document already exists that corresponds to the same ID.
+            </summary>
+            <param name="cosmosDocument">Cosmos Document.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Finalized Document.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.Delete``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <summary>
+            This will delete a document by ID and Partition Key.
+            </summary>
+            <param name="cosmosDocument">Cosmos Document.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Document.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.Upsert``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <summary>
+            This will add a new document or update it if the document already exists.
+            </summary>
+            <param name="cosmosDocument">Cosmos Document.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Finalized Document.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.Update``1(Microsoft.WinGet.RestSource.Cosmos.CosmosDocument{``0})">
+            <summary>
+            This will add update a document.
+            This will fail if a document does not exists.
+            </summary>
+            <param name="cosmosDocument">Cosmos Document.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Finalized Document.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.GetIQueryable``1(Microsoft.Azure.Cosmos.QueryRequestOptions,System.String)">
+            <summary>
+            This will return an IOrderedQueryable for building out document queries.
+            </summary>
+            <param name="feedOptions">Feed Options.</param>
+            <param name="continuationToken">(Optional) The continuation token in the Azure Cosmos DB service.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>IQueryable.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.GetByIdAndPartitionKey``1(System.String,System.String)">
+            <summary>
+            This will retrieve a document by ID and Partition Key.
+            </summary>
+            <param name="id">Document ID.</param>
+            <param name="partitionKey">Partition Key.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Document.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.GetByDocumentQuery``1(Microsoft.Azure.Cosmos.FeedIterator{``0})">
+            <summary>
+            This will retrieve a document by document query.
+            </summary>
+            <param name="documentQuery">Document Query.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Document.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.ICosmosDatabase.GetByDocumentQuery``1(System.Linq.IQueryable{``0},Microsoft.Azure.Cosmos.QueryRequestOptions,System.String)">
+            <summary>
+            This will retrieve a document by document query.
+            </summary>
+            <param name="documentQuery">Document Query.</param>
+            <param name="feedOptions">Feed Options.</param>
+            <param name="continuationToken">(Optional) The continuation token in the Azure Cosmos DB service.</param>
+            <typeparam name="T">Document Type.</typeparam>
+            <returns>Document.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Interfaces.ICosmosIdDocument">
+            <summary>
+            This provides an interface for a Cosmos document which has the Id property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Interfaces.ICosmosIdDocument.Id">
+            <summary>
+            Gets id.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Interfaces.IRebuild">
+            <summary>
+            Rebuild interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRebuild.ProcessRebuildRequestAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Models.ReferenceType,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Processes a rebuild request.
+            </summary>
+            <param name="httpClient">The function's http client.</param>
+            <param name="operationId">Operation id.</param>
+            <param name="sasReference">SAS reference to SQLite file.</param>
+            <param name="type">type of operation performed on the SQLite file.</param>
+            <param name="restSourceTriggerFunction">IRestSourceTriggerFunction.</param>
+            <param name="manifestCacheEndpoint">Manifest cache endpoint.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction">
+            <summary>
+            Provides an interface to wrap azure function manually triggered calls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.GetPackageManifestAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Performs PackageManifest Get request.
+            </summary>
+            <param name="httpClient">Http Client.</param>
+            <param name="packageIndetifier">Package indetifier.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.PostPackageManifestAsync(System.Net.Http.HttpClient,Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Performs PackageManifest Post request.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="packageManifest">Package Manifest.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.PutPackageManifestAsync(System.Net.Http.HttpClient,Microsoft.WinGet.RestSource.Utils.Models.Schemas.PackageManifest,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Performs PackageManifest Put request.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="packageManifest">Package Manifest.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.DeletePackageManifestAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Performs PackageManifest Delete request.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="packageIdentifier">Package Identifier.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.GetAllPackagesAsync(System.Net.Http.HttpClient,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Get all packages.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>List of packages.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.GetPackagesAsync(System.Net.Http.HttpClient,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext,System.String)">
+            <summary>
+            Gets paged packages.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">LoggingContext.</param>
+            <param name="continuationToken">Optional continuation token.</param>
+            <returns>List of packages.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.DeletePackageAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Deletes a package.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="packageIdentifier">Package indentifier.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction.DeleteVersionAsync(System.Net.Http.HttpClient,System.String,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Delete a version.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="packageIdentifier">Package identifier.</param>
+            <param name="version">Version.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">LoggingContext.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Interfaces.IUpdate">
+            <summary>
+            Update interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Interfaces.IUpdate.ProcessUpdateRequestAsync(System.Net.Http.HttpClient,System.String,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Models.ReferenceType,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Process an update request.
+            </summary>
+            <param name="httpClient">Http client.</param>
+            <param name="operationId">Operation id.</param>
+            <param name="commit">Commit.</param>
+            <param name="sasManifestUrl">SAS manifest url.</param>
+            <param name="referenceType">Reference type.</param>
+            <param name="restSourceTriggerFunction">RestSourceTriggerFunction.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Operations.Rebuild">
+            <summary>
+            Class that contains rebuild operations.
+            Rebuild reconstructs the rest source back end data to align with the provided sqlite index file.
+            These are relatively expensive operation that should be used sparingly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Rebuild.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Operations.Rebuild"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Rebuild.ProcessRebuildRequestAsync(System.Net.Http.HttpClient,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Models.ReferenceType,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Rebuild.ProcessRebuildRequestInternalAsync(System.Net.Http.HttpClient,System.String,System.Collections.Generic.IReadOnlyList{Microsoft.WinGet.RestSource.Sql.SqlPackage},System.Collections.Generic.HashSet{System.String},Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Processes a rebuild request from database path.
+            </summary>
+            <param name="httpClient">The function's http client.</param>
+            <param name="operationId">Operation id.</param>
+            <param name="sqlPackages">Sql packages.</param>
+            <param name="restPackages">Rest packages.</param>
+            <param name="restSourceTriggerFunction">IRestSourceTriggerFunction.</param>
+            <param name="manifestCacheEndpoint">Manifest cache endpoint.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Operations.Update">
+            <summary>
+            Class that contains update operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Update.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Operations.Update"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Update.ProcessUpdateRequestAsync(System.Net.Http.HttpClient,System.String,System.String,System.String,Microsoft.WindowsPackageManager.Rest.Models.ReferenceType,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Update.ProcessManifestAddAsync(System.Net.Http.HttpClient,Microsoft.WinGetUtil.Models.V1.Manifest,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Process an manifest add.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="manifest">Manifest.</param>
+            <param name="restSourceTriggerFunction">Rest source trigger.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Update.ProcessManifestModifyAsync(System.Net.Http.HttpClient,Microsoft.WinGetUtil.Models.V1.Manifest,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Process an manifest modify.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="manifest">Manifest.</param>
+            <param name="restSourceTriggerFunction">Rest source trigger.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Operations.Update.ProcessManifestDeleteAsync(System.Net.Http.HttpClient,Microsoft.WinGetUtil.Models.V1.Manifest,Microsoft.WinGet.RestSource.Interfaces.IRestSourceTriggerFunction,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Process an manifest delete.
+            </summary>
+            <param name="httpClient">HttpClient.</param>
+            <param name="manifest">Manifest.</param>
+            <param name="restSourceTriggerFunction">Rest source trigger.</param>
+            <param name="azFuncHostKey">Azure function host key.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Sql.SqlPackage">
+            <summary>
+            Sql package table.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlPackage.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Microsoft.WinGet.RestSource.Sql.SqlVersion})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Sql.SqlPackage"/> class.
+            </summary>
+            <param name="id">Id.</param>
+            <param name="versions">Versions.</param>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Sql.SqlPackage.Id">
+            <summary>
+            Gets the id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Sql.SqlPackage.Versions">
+            <summary>
+            Gets the version.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Sql.SqlReader">
+            <summary>
+            Helper class to read sql database.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Sql.SqlReader"/> class.
+            </summary>
+            <param name="dbPath">Database path.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.Dispose">
+            <summary>
+            Dispose method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.Dispose(System.Boolean)">
+            <summary>
+            Dispose method.
+            </summary>
+            <param name="disposing">Bool value indicating if Dispose is being run.</param>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.GetPackages">
+            <summary>
+            Gets a list of packages in the database.
+            </summary>
+            <returns>List of packages.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.GetVersions(System.String)">
+            <summary>
+            Get versions of a pacakge.
+            </summary>
+            <param name="idsRowid">ids row id.</param>
+            <returns>Versions of package.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.GetVersion(System.String)">
+            <summary>
+            Get version.
+            </summary>
+            <param name="versionsRowId">Version row id.</param>
+            <returns>Version string.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlReader.ReadPathPartFromId(System.String)">
+            <summary>
+            Gets the path where the manifest is located.
+            </summary>
+            <param name="pathPathRowId">Path path row id.</param>
+            <returns>Path of manifest.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.Sql.SqlVersion">
+            <summary>
+            Sql version.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.Sql.SqlVersion.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WinGet.RestSource.Sql.SqlVersion"/> class.
+            </summary>
+            <param name="version">Version.</param>
+            <param name="pathPart">Path part.</param>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Sql.SqlVersion.Version">
+            <summary>
+            Gets the version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.Sql.SqlVersion.PathPart">
+            <summary>
+            Gets the path part.
+            </summary>
+        </member>
+    </members>
+</doc>

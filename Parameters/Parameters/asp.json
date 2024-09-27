@@ -1,0 +1,18 @@
+{
+  "$Schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "Parameters": {
+    "aspName": {
+      "value": "yaotestrest3"
+    },
+    "numberOfWorkers": {
+      "value": "1"
+    },
+    "skuCode": {
+      "value": "S1"
+    },
+    "location": {
+      "value": "westus"
+    }
+  }
+}

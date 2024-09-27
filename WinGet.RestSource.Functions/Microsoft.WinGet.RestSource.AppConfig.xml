@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WinGet.RestSource.AppConfig</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WinGet.RestSource.AppConfig.FeatureFlag">
+            <summary>
+            Names of flag. Must match the name in the App Configuration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WinGet.RestSource.AppConfig.FeatureFlag.GenevaLogging">
+            <summary>
+            Enable Geneva Logging
+            </summary>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig">
+            <summary>
+            WinGet App config Interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig.IsEnabledAsync(Microsoft.WinGet.RestSource.AppConfig.FeatureFlag,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Is Feature flag enabled.
+            </summary>
+            <param name="flag">Flag.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>True if feature is enabled.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.AppConfig.IWinGetAppConfig.IsEnabled(Microsoft.WinGet.RestSource.AppConfig.FeatureFlag,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Is Feature Flag Enabled Async.
+            </summary>
+            <param name="flag">Flag.</param>
+            <param name="loggingContext">Logging context.</param>
+            <returns>True if feature is enabled.</returns>
+        </member>
+        <member name="T:Microsoft.WinGet.RestSource.AppConfig.WinGetAppConfig">
+            <summary>
+            WinGet App Configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WinGet.RestSource.AppConfig.WinGetAppConfig.Instance">
+            <summary>
+            Gets instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.AppConfig.WinGetAppConfig.ModifyFeatureFlagAsync(Microsoft.WinGet.RestSource.AppConfig.FeatureFlag,System.Boolean,System.String,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <summary>
+            Modifies a feature flag using the specified Azure App Config connection string at runtime.
+            WARNING: If the WinGetAppConfig is already initialized the change will be reflected in 30s because that's
+            the refresh timeout.
+            </summary>
+            <param name="flag">Feature flag.</param>
+            <param name="value">New value.</param>
+            <param name="connectionString">Read-Write connection string.</param>
+            <param name="loggingContext">Logging Context.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.AppConfig.WinGetAppConfig.IsEnabledAsync(Microsoft.WinGet.RestSource.AppConfig.FeatureFlag,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.AppConfig.WinGetAppConfig.IsEnabled(Microsoft.WinGet.RestSource.AppConfig.FeatureFlag,Microsoft.WindowsPackageManager.Rest.Diagnostics.LoggingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WinGet.RestSource.AppConfig.WinGetAppConfig.RunWithRetryAsync(System.Func{System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Retry when the function returns a specific value. Copy paste from RetryHelper because don't want
+            to add dependencies to this project.
+            </summary>
+            <param name="func">Function to call.</param>
+            <returns>TReturn. If the retries expired, then return the retry value.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,48 @@
+{
+  "$Schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "Parameters": {
+    "cosmosContainer": {
+      "value": "Manifests"
+    },
+    "appInsightName": {
+      "value": "yaotestrest3"
+    },
+    "monitoringTenant": {
+      "value": ""
+    },
+    "runFromPackageUrl": {
+      "value": ""
+    },
+    "location": {
+      "value": "westus"
+    },
+    "monitoringRole": {
+      "value": ""
+    },
+    "azFuncStorageName": {
+      "value": "yaotestrest3"
+    },
+    "monitoringMetricsAccount": {
+      "value": ""
+    },
+    "manifestCacheEndpoint": {
+      "value": ""
+    },
+    "keyVaultName": {
+      "value": "yaotestrest3"
+    },
+    "functionName": {
+      "value": "yaotestrest3"
+    },
+    "cosmosDatabase": {
+      "value": "WinGet"
+    },
+    "appServiceName": {
+      "value": "yaotestrest3"
+    },
+    "serverIdentifier": {
+      "value": "yaotestrest3"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$Schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "Parameters": {
+    "location": {
+      "value": "westus"
+    },
+    "storageAccountName": {
+      "value": "yaotestrest3"
+    },
+    "accountType": {
+      "value": "Standard_GRS"
+    }
+  }
+}

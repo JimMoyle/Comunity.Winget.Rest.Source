@@ -1,0 +1,31 @@
+1. Import-Module .\Microsoft.WinGet.Source.psd1
+
+2. Connect-AzAccount
+
+
+
+3. New-WinGetSource -Name "yaotestrest" -ResourceGroup "yaotestrest" -SubscriptionName "Visual Studio Enterprise Subscription" -Region "westus" -TemplateFolderPath "F:\WinGetRestDeployment\ARMTemplate" -ParameterOutput "F:\WinGetRestDeployment\Parameters" -RestSourcePath "F:\WinGetRestDeployment\WinGet.RestSource.Functions.zip"  -ImplementationPerformance "Basic" -ShowConnectionInstructions -Verbose
+
+
+4. Assign storage account roles and appconfiguration roles to azure function 
+
+Storage Account Contributor
+Storage Blob Data Owner
+Storage Table Data Contributor
+Storage Queue Data Contributor
+Storage Queue Data Message Processor
+Storage Queue Data Message Sender
+App Configuration Data Reader
+
+
+5. Assign cosmosdb access 
+
+az cosmosdb sql role definition create --account-name <cosmos db account> --resource-group <resource group> --body @F:\WinGetRestDeployment\passwordlessRole.json
+az cosmosdb sql role assignment create --account-name <cosmos db account> --resource-group <resource group> --scope "/" --principal-id <principal id> --role-definition-id <role definition id>
+
+
+6. Add a manifest
+
+Copy runtime to powershell support folder
+
+Add-WinGetManifest -FunctionName "yaotestrest3"  -Path "F:\PMPkgs\winget-pkgs\manifests\7\7zip\7zip\21.06" -Verbose
